@@ -88,10 +88,11 @@ h3{font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute
 .closebar{display:flex;gap:8px;flex-wrap:wrap}
 /* labels */
 .labels{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px}
-.label{background:#fff;color:#0b1422;border-radius:12px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.label{background:#fff;color:#0b1422;border-radius:12px;padding:12px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
 .label .big{font-family:var(--display);font-weight:700;font-size:44px;line-height:1;letter-spacing:.03em}
 .label .sub{font-family:var(--display);font-weight:600;font-size:20px;text-transform:uppercase;letter-spacing:.04em}
 .label img{width:220px;max-width:100%;height:auto;image-rendering:pixelated}
+.label img.labelimg{width:100%;max-width:300px;image-rendering:auto}
 .label small{font-size:12px;color:#40526a}
 .urlbox{display:flex;gap:8px;align-items:center;width:100%}
 .urlbox code{flex:1;min-width:0;overflow-wrap:anywhere;font-family:var(--mono);font-size:11px;background:#eef2f7;border-radius:6px;padding:6px;text-align:left;user-select:all}
@@ -317,6 +318,21 @@ function showCase(c,zoneId,itemName){
   if(zoneId){ itemName?selectItem(zoneId,itemName):selectZone(zoneId) } else overview(false);
 }
 
+function labelImage(qr,c){
+  const W=600,H=820,cv=document.createElement('canvas');cv.width=W;cv.height=H;const g=cv.getContext('2d');
+  g.fillStyle='#ffffff';g.fillRect(0,0,W,H);
+  g.strokeStyle='#0b1422';g.lineWidth=6;g.strokeRect(3,3,W-6,H-6);
+  g.fillStyle='#0b1422';g.textAlign='center';g.textBaseline='alphabetic';
+  g.font='700 96px "Barlow Condensed","Arial Narrow",Arial,sans-serif';g.fillText('CASE '+c.num,W/2,110);
+  g.font='600 34px "Barlow Condensed","Arial Narrow",Arial,sans-serif';
+  const words=(c.title||'').toUpperCase().split(' ');let line='',lines=[];
+  for(const w of words){const t=line?line+' '+w:w; if(g.measureText(t).width>W-80&&line){lines.push(line);line=w}else line=t}
+  if(line)lines.push(line); lines=lines.slice(0,2);
+  lines.forEach((l,i)=>g.fillText(l,W/2,160+i*38));
+  const q=470,qy=lines.length>1?230:200; if(qr) g.drawImage(qr,(W-q)/2,qy,q,q);
+  g.font='500 26px "IBM Plex Sans",Arial,sans-serif';g.fillStyle='#40526a';g.fillText('Scan to see what is inside',W/2,qy+q+50);
+  return cv.toDataURL('image/png');
+}
 function showLabels(){
   homeBtn.hidden=false; labelsBtn.hidden=true; sub.textContent='QR labels';
   app.replaceChildren();
@@ -332,13 +348,15 @@ function showLabels(){
     const holder=el('div',{});
     const copyBtn=el('button',{onclick:()=>{const done=()=>copyBtn.textContent='Copied';navigator.clipboard?.writeText(url).then(done,()=>sel(code)) ?? sel(code)}},'Copy');
     const code=el('code',{},url);
-    grid.append(el('div',{class:'label'},el('div',{class:'big'},'CASE '+c.num),el('div',{class:'sub'},c.title),holder,el('small',{},'Scan to see what is inside'),el('div',{class:'urlbox'},code,copyBtn)));
+    grid.append(el('div',{class:'label'},holder,el('small',{},'Save or print this whole picture. It includes the case number.'),el('div',{class:'urlbox'},code,copyBtn)));
     if(ready && window.QRCode){
       const tmp=el('div',{});
       new QRCode(tmp,{text:url,width:512,height:512,correctLevel:QRCode.CorrectLevel.M});
       const canvas=tmp.querySelector('canvas');
-      const img=el('img',{alt:'QR code for case '+c.num,src:canvas?canvas.toDataURL('image/png'):''});
+      const img=el('img',{alt:'QR label for case '+c.num,class:'labelimg'});
       holder.append(img);
+      const draw=()=>{ img.src=labelImage(canvas,c); };
+      draw(); if(document.fonts&&document.fonts.ready) document.fonts.ready.then(draw);
     } else holder.append(el('p',{class:'muted'},'QR code unavailable.'));
   });
   function sel(n){const r=document.createRange();r.selectNodeContents(n);const s=getSelection();s.removeAllRanges();s.addRange(r)}
