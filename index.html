@@ -131,14 +131,14 @@ const BASE = location.href.split("#")[0];
 // ---- Inventory. Add a new case by copying one block. Positions are % of the open photo. ----
 const P="img/cases/";
 const CASES = [
- { id:"case70", num:70, title:"Case 70", summary:"",
+ { id:"case70", num:70, title:"Video & data cables", summary:"Video & data cables",
    closed:P+"case70closed.jpg", views:[
      {img:P+"case70open.jpg", action:"Remove backpack"},
-     {img:P+"case70open2.jpg", action:"Put backpack back", note:"Backpack removed"} ], zones:[] },
- { id:"case71", num:71, title:"Case 71", summary:"",
+     {img:P+"case70open2.jpg", action:"Put backpack back", note:"Backpack removed"} ], zones:[{"id": "L", "name": "Left compartment", "where": "Left compartment", "items": [{"name": "LAN cable", "detail": "", "qty": 74}], "box": [14, 52, 36, 32]}, {"id": "R", "name": "Right compartment", "where": "Right compartment", "items": [{"name": "SDI cable", "detail": "", "qty": 11}, {"name": "DMX cable 3-pin", "detail": "", "qty": 16}, {"name": "Backpack", "detail": "", "qty": 1}, {"name": "Wood base", "detail": "", "qty": 2}, {"name": "ILDA cable", "detail": "", "qty": 1}, {"name": "USB extension", "detail": "", "qty": 1}], "box": [51, 52, 34, 32]}] },
+ { id:"case71", num:71, title:"Cam-Lok power", summary:"Cam-Lok power",
    closed:P+"case71closed.jpg", views:[
      {img:P+"case71open.jpg", action:"Remove blower"},
-     {img:P+"case71open2.jpg", action:"Put blower back", note:"Blower removed"} ], zones:[] },
+     {img:P+"case71open2.jpg", action:"Put blower back", note:"Blower removed"} ], zones:[{"id": "L", "name": "Left compartment", "where": "Left compartment", "items": [{"name": "Cam-Lok power cable 400–750 A", "detail": "3 m · 10 ft", "qty": 2}, {"name": "Cam-Lok power cable 400–750 A", "detail": "2 m · 8 ft", "qty": 1}, {"name": "Cam-Lok power cable 400–750 A", "detail": "2 m · 6 ft", "qty": 1}, {"name": "400 A coupler M → M", "detail": "", "qty": 3}, {"name": "400 A coupler F → F", "detail": "", "qty": 9}, {"name": "Audio cable bundle", "detail": "", "qty": 1}], "box": [14, 52, 36, 32]}, {"id": "R", "name": "Right compartment", "where": "Right compartment", "items": [{"name": "Cam-Lok power cable 400–750 A", "detail": "9 m · 30 ft", "qty": 1}, {"name": "Hand blower", "detail": "", "qty": 2}], "box": [51, 52, 34, 32]}] },
  { id:"case72", num:72, title:"DMX cables", summary:"3-pin and 5-pin DMX",
    closed:P+"case72closed.jpg", views:[{img:P+"case72open.jpg"}],
    zones:[
@@ -156,8 +156,8 @@ const CASES = [
        {name:"Red", detail:"5–10 m", qty:6, color:"#ed4646", at:[81,75]},
        {name:"Pink", detail:"0–5 m", qty:27, color:"#f59cc7", at:[79,57]} ]}
    ]},
- { id:"case73", num:73, title:"Case 73", summary:"",
-   closed:P+"case73closed.jpg", views:[{img:P+"case73open.jpg"}], zones:[] },
+ { id:"case73", num:73, title:"Hybrid & waterproof cables", summary:"Hybrid & waterproof cables",
+   closed:P+"case73closed.jpg", views:[{img:P+"case73open.jpg"}], zones:[{"id": "L", "name": "Left compartment", "where": "Left compartment", "items": [{"name": "Power/DMX hybrid, orange 5-pin", "detail": "", "qty": 10}, {"name": "Power/DMX hybrid, blue-white 5-pin", "detail": "", "qty": 17}, {"name": "Power/DMX hybrid, blue-white 3-pin", "detail": "", "qty": 13}], "box": [14, 52, 36, 32]}, {"id": "R", "name": "Right compartment", "where": "Right compartment", "items": [{"name": "PowerCON orange", "detail": "", "qty": 10}, {"name": "Edison cable 3-pin", "detail": "", "qty": 5}, {"name": "DMX waterproof M → DMX F 3-pin", "detail": "", "qty": 6}, {"name": "DMX waterproof F → DMX M 3-pin", "detail": "", "qty": 10}, {"name": "Edison waterproof cable", "detail": "", "qty": 7}, {"name": "DMX waterproof extension 3-pin", "detail": "", "qty": 9}], "box": [51, 52, 34, 32]}] },
  { id:"case74", num:74, title:"Power cables", summary:"PowerCON, Edison, IEC, C-Form",
    closed:P+"case74closed.jpg", views:[{img:P+"case74open.jpg"}],
    zones:[
@@ -170,13 +170,13 @@ const CASES = [
     { id:"br", name:"Orange PowerCON → Edison", where:"Bottom right", ref:"img/case74_right_ref.jpg", box:[51,69,34,15],
       items:[{name:"Orange PowerCON → Edison", qty:23}]}
    ]},
- { id:"case75", num:75, title:"Case 75", summary:"", closed:null, views:[], zones:[] },
- { id:"case76", num:76, title:"Case 76", summary:"", closed:null, views:[], zones:[] },
- { id:"case77", num:77, title:"Case 77", summary:"", closed:null, views:[], zones:[] },
- { id:"case78", num:78, title:"Case 78", summary:"",
-   closed:P+"case78closed.jpg", views:[{img:P+"case78open.jpg"}], zones:[] },
- { id:"case79", num:79, title:"Case 79", summary:"",
-   closed:P+"case79closed.jpg", views:[{img:P+"case79open.jpg"}], zones:[] }
+ { id:"case75", num:75, title:"Edison cables", summary:"Edison cables", closed:null, views:[], zones:[{"id": "N", "name": "Whole case", "where": "Whole case", "items": [{"name": "Edison cable", "detail": "15 m · 49 ft", "qty": 11}, {"name": "Edison cable", "detail": "8 m · 26 ft", "qty": 14}, {"name": "Edison power box", "detail": "", "qty": 2}, {"name": "Edison cable", "detail": "3 m · 10 ft", "qty": 10}]}] },
+ { id:"case76", num:76, title:"Socapex & C-Form", summary:"Socapex & C-Form", closed:null, views:[], zones:[{"id": "N", "name": "Whole case", "where": "Whole case", "items": [{"name": "C-Form 2-1", "detail": "", "qty": 31}, {"name": "Socapex → C-Form", "detail": "", "qty": 9}, {"name": "Socapex → Edison", "detail": "", "qty": 3}, {"name": "C-Form extension", "detail": "", "qty": 8}]}] },
+ { id:"case77", num:77, title:"Adapters & case 116", summary:"Adapters & case 116", closed:null, views:[], zones:[{"id": "N", "name": "Whole case", "where": "Whole case", "items": [{"name": "DMX cable 3-pin male → 5-pin female", "detail": "", "qty": 18}, {"name": "DMX cable 3-pin female → 5-pin male", "detail": "", "qty": 25}, {"name": "Edison M → C-Form F", "detail": "", "qty": 12}, {"name": "Edison F → C-Form M", "detail": "", "qty": 10}, {"name": "Black case 116 (with contents)", "detail": "", "qty": 1}, {"name": "Socapex → 3× C-Form outlet", "detail": "", "qty": 5}]}] },
+ { id:"case78", num:78, title:"C-Form cables", summary:"C-Form cables",
+   closed:P+"case78closed.jpg", views:[{img:P+"case78open.jpg"}], zones:[{"id": "L", "name": "Left compartment", "where": "Left compartment", "items": [{"name": "C-Form cable", "detail": "1 m · 3 ft", "qty": 2}, {"name": "C-Form cable", "detail": "2 m · 6 ft", "qty": 3}, {"name": "C-Form cable", "detail": "3 m · 9 ft", "qty": 14}, {"name": "C-Form cable", "detail": "4 m · 14 ft", "qty": 1}, {"name": "C-Form cable", "detail": "5 m · 15 ft", "qty": 13}], "box": [14, 52, 36, 32]}, {"id": "R", "name": "Right compartment", "where": "Right compartment", "items": [{"name": "C-Form cable", "detail": "5 m · 18 ft", "qty": 7}, {"name": "C-Form cable", "detail": "6 m · 21 ft", "qty": 1}, {"name": "C-Form cable", "detail": "7 m · 23 ft", "qty": 1}, {"name": "C-Form cable", "detail": "8 m · 25 ft", "qty": 3}, {"name": "C-Form cable", "detail": "10 m · 32 ft", "qty": 8}, {"name": "C-Form cable", "detail": "23 m · 75 ft", "qty": 2}], "box": [51, 52, 34, 32]}, {"id": "N", "name": "Not sorted yet", "where": "Not sorted yet", "items": [{"name": "C-Form cable", "detail": "7 m · 23 ft", "qty": 2}]}] },
+ { id:"case79", num:79, title:"C-Form cables, long", summary:"C-Form cables, long",
+   closed:P+"case79closed.jpg", views:[{img:P+"case79open.jpg"}], zones:[{"id": "L", "name": "Left compartment", "where": "Left compartment", "items": [{"name": "C-Form cable", "detail": "15 m · 50 ft", "qty": 18}], "box": [14, 52, 36, 32]}, {"id": "R", "name": "Right compartment", "where": "Right compartment", "items": [{"name": "C-Form cable", "detail": "23 m · 75 ft", "qty": 6}, {"name": "C-Form cable", "detail": "30 m · 100 ft", "qty": 2}], "box": [51, 52, 34, 32]}] }
 ];
 
 const app=document.getElementById('app'), homeBtn=document.getElementById('homeBtn'), labelsBtn=document.getElementById('labelsBtn'), sub=document.getElementById('sub');
@@ -198,7 +198,7 @@ function showHome(){
   input.addEventListener('input',()=>{
     const q=input.value.trim(); res.replaceChildren();
     if(!q)return;
-    const hits=allItems().filter(({c,z,i})=>match(q,`case ${c.num} ${c.title} ${z.name} ${z.where} ${i.name} ${i.detail||''} ${c.id==='case72'?z.id+' pin dmx':''}`));
+    const hits=allItems().filter(({c,z,i})=>match(q,`case ${c.num} ${z.name} ${z.where} ${i.name} ${i.detail||''} ${c.id==='case72'?z.id+' pin dmx':''}`));
     if(!hits.length){res.append(el('p',{class:'muted'},'Nothing matches. Try fewer words.'));return}
     hits.slice(0,40).forEach(h=>res.append(itemRow(h.c,h.z,h.i,true)));
   });
@@ -224,6 +224,9 @@ function showCase(c,zoneId,itemName){
   const head=el('div',{class:'casehead'},el('div',{},el('span',{class:'num'},'CASE '+c.num),el('h1',{},c.title)),hasContents?el('span',{class:'qty'},total(c)+' items'):null);
   if(!c.closed){
     app.append(head,el('div',{class:'note'},el('b',{},'Photos coming soon'),el('p',{class:'muted',style:'margin:6px 0 0'},'This case does not have photos yet. Its QR code already works and will show the photos once they are added.')));
+    if(hasContents) app.append(el('aside',{class:'panel',style:'position:static'},el('h2',{},'Inside case '+c.num),
+      ...c.zones.map(z=>el('div',{class:'group'},el('h3',{},z.where+' · '+zoneTotal(z)),
+        ...z.items.map(i=>el('div',{class:'row'},el('span',{class:'grow'},itemLabel(i)),el('span',{class:'qty'},String(i.qty))))))));
     return;
   }
   const panel=el('aside',{class:'panel','aria-live':'polite'});
@@ -236,6 +239,7 @@ function showCase(c,zoneId,itemName){
   const openPhoto=el('div',{class:'photo',hidden:true},openImg);
   const overlays=[];
   c.zones.forEach(z=>{
+    if(!z.box){ z.items.forEach(i=>{}); return; }
     const [x,y,w,h]=z.box;
     const zb=el('button',{class:'zone','data-z':z.id,style:`left:${x}%;top:${y}%;width:${w}%;height:${h}%`,'aria-label':z.where+': '+z.name,onclick:()=>selectZone(z.id)},el('em',{},z.where.toUpperCase()));
     openPhoto.append(zb); overlays.push(zb);
@@ -287,11 +291,11 @@ function showCase(c,zoneId,itemName){
       el('button',{class:'btn',onclick:()=>overview(true)},'← Whole case'),
       el('h2',{},z.name),
       el('p',{class:'muted',style:'margin:0'},'Case '+c.num+' · '+z.where),
-      el('img',{class:'ref',src:z.ref,alt:z.name+' reference photo'}),
+      ...(z.ref?[el('img',{class:'ref',src:z.ref,alt:z.name+' reference photo'})]:[]),
       el('div',{class:'stats'},el('div',{class:'stat'},el('b',{},String(zoneTotal(z))),el('small',{},'Recorded items')),el('div',{class:'stat'},el('b',{},String(z.items.length)),el('small',{},'Types'))),
       el('div',{class:'group'},...z.items.map(i=>el('button',{class:'row',onclick:()=>i.at?selectItem(z.id,i.name):null},
         i.color?el('span',{class:'dot',style:'--c:'+i.color}):null,el('span',{class:'grow'},itemLabel(i)),el('span',{class:'qty'},String(i.qty))))),
-      el('div',{class:'ret'},el('small',{},'Return to'),el('b',{},'Case '+c.num+' → '+z.where)));
+      el('div',{class:'ret'},el('small',{},'Return to'),el('b',{},'Case '+c.num+(z.box?' → '+z.where:''))));
     reveal();
   }
   function selectItem(zid,name){
@@ -302,7 +306,7 @@ function showCase(c,zoneId,itemName){
     panel.replaceChildren(
       el('button',{class:'btn',onclick:()=>selectZone(zid)},'← All '+z.name),
       el('h2',{},i.name+' · '+z.name),
-      el('img',{class:'ref',src:z.ref,alt:z.name+' reference photo'}),
+      ...(z.ref?[el('img',{class:'ref',src:z.ref,alt:z.name+' reference photo'})]:[]),
       el('div',{class:'stats'},el('div',{class:'stat'},el('b',{},i.detail||'—'),el('small',{},'Length')),el('div',{class:'stat'},el('b',{},String(i.qty)),el('small',{},'Recorded quantity'))),
       el('div',{class:'ret'},el('small',{},'Return to'),el('b',{},'Case '+c.num+' → '+z.where+' → '+i.name.toLowerCase()+' marker')));
     reveal();
